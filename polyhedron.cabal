@@ -4,7 +4,7 @@ cabal-version: >= 1.10
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 74bf109e84141eacb4fb484b88e2f9385c51b92583c2251b1b7bbd9d73d38082
+-- hash: ea590d71f8662588e68a5a119a57f02dcade6fea655ef8a0f25b846cab1ee609
 
 name:           polyhedron
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Delaunay
       Lib
       Polyhedron
   other-modules:
