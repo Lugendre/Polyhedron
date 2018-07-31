@@ -2,6 +2,7 @@ module Delaunay where
 
 import Numeric.LinearAlgebra
 import Data.List
+import qualified Data.Map as Map
 
 -- Data Types
 
@@ -11,12 +12,19 @@ type Triangle = [Vector R]
 
 type Tetrahedron = [Vector R]
 
+type TetraMap = Map.Map Tetrahedron Bool
+
+type Polyhedron = [Vector R]
 
 
 -- Helper
 
 hasCommonPoints :: Tetrahedron -> Tetrahedron -> Bool
-hasCommonPoints th1 th2 = sort th1 == sort th2
+hasCommonPoints th1 th2
+    | (is == []) = False
+    | otherwise = True
+        where
+            is = th1 `intersect` th2
 
 getCircumcircle :: Tetrahedron -> Circle
 getCircumcircle (r1:th1) = Circle cp rad
@@ -29,10 +37,29 @@ getCircumcircle (r1:th1) = Circle cp rad
         rad = norm_2 (cp - r1)
         iv = vector [1, 1, 1]
 
+addTetrahedron :: Tetrahedron -> TetraMap -> TetraMap
+addTetrahedron th ths
+    | (Map.member th ths) = Map.adjust f th ths
+    | otherwise = Map.insert th True ths
+        where
+            f _ = False
+
+-- getDelaunayTriangle :: Polyhedron -> Tetrahedrons
+-- getDelaunayTriangle ::
+
+
 p1 = vector [1,2,3]
 p2 = vector [7,4,2]
 p3 = vector [5,5,9]
 p4 = vector [0,0,0]
-th = [p1,p2,p3,p4]
+th1 = [p1,p2,p3,p4]
 
-rads (Circle cp r) = map norm_1 $ map (subtract cp) th
+p5 = vector [1,0,0]
+p6 = vector [0,1,0]
+p7 = vector [0,0,1]
+p8 = vector [0,0,0]
+th2 = [p5,p6,p7,p8]
+
+thm = Map.fromList [(th1, True), (th2, True)]
+
+rads (Circle cp r) = map norm_1 $ map (subtract cp) th1

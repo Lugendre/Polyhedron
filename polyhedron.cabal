@@ -4,7 +4,7 @@ cabal-version: >= 1.10
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ea590d71f8662588e68a5a119a57f02dcade6fea655ef8a0f25b846cab1ee609
+-- hash: cc6933a283a6cbc7c3ddf4953d0c572c467861665d9188731fa10805d8ada2dd
 
 name:           polyhedron
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , containers >=0.4.0.0
     , hmatrix >=0.19.0.0
   default-language: Haskell2010
 
@@ -48,6 +49,7 @@ executable polyhedron-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers >=0.4.0.0
     , hmatrix >=0.19.0.0
     , polyhedron
   default-language: Haskell2010
@@ -62,6 +64,7 @@ test-suite polyhedron-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers >=0.4.0.0
     , hmatrix >=0.19.0.0
     , polyhedron
   default-language: Haskell2010
