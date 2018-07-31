@@ -44,8 +44,8 @@ addTetrahedron th ths
         where
             f _ = False
 
--- getDelaunayTriangle :: Polyhedron -> Tetrahedrons
--- getDelaunayTriangle ::
+getHugeTetrahedron :: Polyhedron -> Tetrahedron
+getHugeTetrahedron ph = undefined
 
 
 p1 = vector [1,2,3]
